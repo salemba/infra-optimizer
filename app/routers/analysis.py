@@ -11,6 +11,7 @@ from __future__ import annotations
 import logging
 import os
 from datetime import datetime
+from urllib.parse import urlparse
 
 from fastapi import APIRouter, Body, HTTPException, Query, Request, Security
 from slowapi import Limiter
@@ -18,6 +19,13 @@ from slowapi import Limiter
 from app import deps
 from app.models import AnalyzeRequest, Report
 from app.security import is_private, limiter, require_key
+
+
+def _require_store():
+    """Return the store or raise 503 if it hasn't been initialised yet."""
+    if deps.store is None:
+        raise HTTPException(status_code=503, detail="Store not initialised — server is still starting up.")
+    return deps.store
 
 logger = logging.getLogger(__name__)
 
@@ -97,7 +105,8 @@ async def analyze(
             try:
                 await deps.http_client.post(url, json=payload)
             except Exception as exc:
-                logger.warning("WRNRAN000 webhook_failed", extra={"url": url, "error": str(exc)})
+                _safe_url = urlparse(url)._replace(query="", fragment="").geturl()
+                logger.warning("WRNRAN000 webhook_failed", extra={"url": _safe_url, "error": str(exc)})
 
     return report
 
@@ -114,7 +123,7 @@ async def analyze(
     },
 )
 def latest_report(_: None = Security(require_key)) -> Report:
-    report = deps.store.latest()
+    report = _require_store().latest()
     if report is None:
         raise HTTPException(status_code=404, detail="No report yet — POST /api/analyze first.")
     return report
@@ -132,7 +141,7 @@ def report_history(
     n: int = Query(default=20, ge=1, le=100, description="Number of reports to return (max 100)."),
     _: None = Security(require_key),
 ) -> list[Report]:
-    return deps.store.history(n)
+    return _require_store().history(n)
 
 
 @router.get(
@@ -164,4 +173,4 @@ def metrics_history(
     limit: int             = Query(default=1000, ge=1, le=10000, description="Max rows to return."),
     _: None = Security(require_key),
 ) -> list[dict]:
-    return deps.store.metric_history(host=host, start=start, end=end, limit=limit)
+    return _require_store().metric_history(host=host, start=start, end=end, limit=limit)

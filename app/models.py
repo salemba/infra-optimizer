@@ -44,7 +44,7 @@ class MetricPoint(BaseModel):
 
 
 class AnalyzeRequest(BaseModel):
-    metrics:  list[MetricPoint]
+    metrics:  Annotated[list[MetricPoint], Field(min_length=1)]
     # Per-request webhook overrides (e.g. alert a specific Slack channel for this run)
     webhooks: list[str] = []
 

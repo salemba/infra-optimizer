@@ -6,7 +6,9 @@ structured remediation recommendations.
 
 Design decisions
 ----------------
-- Module-level client singleton: one HTTP connection pool shared across all requests.
+- Lazy client singleton: the Anthropic client is created on the first LLM call,
+  not at import time. This prevents an import-time crash when ANTHROPIC_API_KEY
+  is absent (CI, local dev without .env, uvicorn cold-start).
 - Per-invocation model override via LangGraph RunnableConfig + Configuration dataclass.
 - The entire LLM call AND response parsing are wrapped in a single try/except so that
   any failure (missing API key, network error, rate limit, malformed JSON) is captured
@@ -27,8 +29,17 @@ from app.state import State
 
 logger = logging.getLogger(__name__)
 
-# One HTTP connection pool shared across all requests (P4 fix)
-_llm_client = anthropic.Anthropic()
+# Lazy singleton — instantiated on the first LLM call, not at import time.
+# This prevents an APIKeyNotFoundError crash at startup when ANTHROPIC_API_KEY
+# is not yet set (CI pipelines, local dev without .env, uvicorn cold-start).
+_llm_client: anthropic.Anthropic | None = None
+
+
+def _get_client() -> anthropic.Anthropic:
+    global _llm_client
+    if _llm_client is None:
+        _llm_client = anthropic.Anthropic()
+    return _llm_client
 
 _SYSTEM = """
 Tu es un expert infrastructure.
@@ -68,7 +79,7 @@ def recommend(state: State, config: RunnableConfig = None) -> State:
     error: str | None = None
 
     try:
-        msg = _llm_client.messages.create(
+        msg = _get_client().messages.create(
             model=cfg.llm_model,
             max_tokens=cfg.max_tokens,
             system=_SYSTEM,

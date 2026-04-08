@@ -379,26 +379,35 @@ class DuckDBStore(ReportStore):
         Persist report + raw metric rows in a single transaction.
         Use this instead of save() when raw timeseries queryability matters.
         Called by the pipeline runner in deps.py when DuckDBStore is active.
+
+        All writes (report row, anomaly rows, metric_point rows) succeed or
+        fail atomically — no partial state is left in the database on error.
         """
-        self.save(report)
         conn = self._connect()
-        for m in metrics:
-            conn.execute(
-                f"""
-                INSERT INTO metric_points VALUES (
-                    ?, ?, ?, {', '.join('?' * len(self._METRIC_COLS))}, ?, ?, ?
+        conn.execute("BEGIN")
+        try:
+            self.save(report)
+            for m in metrics:
+                conn.execute(
+                    f"""
+                    INSERT OR IGNORE INTO metric_points VALUES (
+                        ?, ?, ?, {', '.join('?' * len(self._METRIC_COLS))}, ?, ?, ?
+                    )
+                    """,
+                    (
+                        report.report_id,
+                        m.timestamp.isoformat(),
+                        m.host,
+                        *[getattr(m, c) for c in self._METRIC_COLS],
+                        m.service_status.database,
+                        m.service_status.api_gateway,
+                        m.service_status.cache,
+                    ),
                 )
-                """,
-                (
-                    report.report_id,
-                    m.timestamp.isoformat(),
-                    m.host,
-                    *[getattr(m, c) for c in self._METRIC_COLS],
-                    m.service_status.database,
-                    m.service_status.api_gateway,
-                    m.service_status.cache,
-                ),
-            )
+            conn.execute("COMMIT")
+        except Exception:
+            conn.execute("ROLLBACK")
+            raise
 
     def latest(self) -> Report | None:
         conn = self._connect()
