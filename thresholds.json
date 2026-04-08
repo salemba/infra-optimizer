@@ -1,0 +1,9 @@
+{
+  "cpu_usage":           { "warning": 75,   "critical": 90   },
+  "memory_usage":        { "warning": 75,   "critical": 88   },
+  "latency_ms":          { "warning": 200,  "critical": 300  },
+  "disk_usage":          { "warning": 75,   "critical": 88   },
+  "temperature_celsius": { "warning": 70,   "critical": 82   },
+  "error_rate":          { "warning": 0.05, "critical": 0.10 },
+  "io_wait":             { "warning": 5,    "critical": 10   }
+}

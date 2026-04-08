@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Girafana</title>
+  <script src="/static/chart.umd.min.js"
+          onerror="this.onerror=null;
+                   var s=document.createElement('script');
+                   s.src='https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+                   document.head.appendChild(s);">
+  </script>
+  <style>
+    :root {
+      --bg:       #0f172a;
+      --surface:  #1e293b;
+      --border:   #334155;
+      --text:     #e2e8f0;
+      --muted:    #94a3b8;
+      --healthy:  #22c55e;
+      --warning:  #f59e0b;
+      --critical: #ef4444;
+      --accent:   #38bdf8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+
+    header {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
+      padding: 1rem 2rem; border-bottom: 1px solid var(--border); background: var(--surface);
+    }
+    header h1 { font-size: 1.1rem; font-weight: 600; letter-spacing: .05em; color: var(--accent); }
+    .header-right { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+    #health-badge {
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+      padding: .25rem .75rem; border-radius: 999px; text-transform: uppercase;
+    }
+    .badge-healthy  { background: #14532d; color: var(--healthy); }
+    .badge-warning  { background: #78350f; color: var(--warning); }
+    .badge-critical { background: #7f1d1d; color: var(--critical); }
+
+    /* Live indicator */
+    #live-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--muted); display: inline-block; margin-right: 4px;
+    }
+    #live-dot.active { background: var(--healthy); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.4; } }
+
+    main { padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: .75rem; padding: 1rem 1.25rem; }
+    .card .label { font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: .35rem; }
+    .card .value { font-size: 1.6rem; font-weight: 700; }
+    .card .sub   { font-size: .75rem; color: var(--muted); margin-top: .2rem; }
+
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: .75rem; padding: 1.25rem; }
+    .panel h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 1rem; }
+    .chart-wrap { height: 220px; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+    table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    th { text-align: left; color: var(--muted); font-weight: 500; padding: .4rem .6rem; border-bottom: 1px solid var(--border); }
+    td { padding: .5rem .6rem; border-bottom: 1px solid #1e293b; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    .sev { display: inline-block; font-size: .65rem; font-weight: 700; padding: .15rem .5rem; border-radius: 999px; text-transform: uppercase; }
+    .sev-critical { background: #7f1d1d; color: var(--critical); }
+    .sev-warning  { background: #78350f; color: var(--warning); }
+    .metric-tag { display: inline-block; background: #0f172a; border: 1px solid var(--border); border-radius: .3rem; padding: .1rem .4rem; margin: .1rem; font-size: .65rem; color: var(--muted); }
+
+    .rec-list { display: flex; flex-direction: column; gap: .75rem; }
+    .rec { border-left: 3px solid var(--border); padding: .75rem 1rem; background: #0f172a; border-radius: 0 .5rem .5rem 0; }
+    .rec.high   { border-color: var(--critical); }
+    .rec.medium { border-color: var(--warning); }
+    .rec.low    { border-color: var(--muted); }
+    .rec-title  { font-size: .85rem; font-weight: 600; margin-bottom: .25rem; }
+    .rec-desc   { font-size: .75rem; color: var(--muted); margin-bottom: .5rem; }
+    .rec-actions { list-style: none; }
+    .rec-actions li { font-size: .72rem; color: var(--accent); padding: .1rem 0; }
+    .rec-actions li::before { content: "→ "; }
+
+    /* Feedback widget */
+    .rec-feedback { margin-top: .75rem; padding-top: .6rem; border-top: 1px solid var(--border); }
+    .rec-feedback-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: .4rem; }
+    .fb-btns { display: flex; gap: .35rem; flex-wrap: wrap; }
+    .fb-btn {
+      font-size: .68rem; font-weight: 600; padding: .2rem .6rem;
+      border-radius: .35rem; border: 1px solid var(--border);
+      background: transparent; color: var(--muted); cursor: pointer;
+      transition: all .15s;
+    }
+    .fb-btn:hover { border-color: var(--accent); color: var(--text); }
+    .fb-btn.active-resolved     { background: #14532d; border-color: var(--healthy);  color: var(--healthy); }
+    .fb-btn.active-partial      { background: #1e3a5f; border-color: var(--accent);   color: var(--accent); }
+    .fb-btn.active-not_relevant { background: #1e293b; border-color: var(--muted);    color: var(--text); }
+    .fb-btn.active-not_tried    { background: #78350f33; border-color: var(--warning); color: var(--warning); }
+    .fb-saved { font-size: .65rem; color: var(--healthy); margin-left: .5rem; opacity: 0; transition: opacity .3s; }
+    .fb-saved.show { opacity: 1; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: .9rem 2rem;
+      margin-top: .5rem;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: .5rem;
+    }
+    .footer-brand { display: flex; align-items: center; gap: .45rem; }
+    .footer-logo  { color: var(--accent); font-size: 1rem; }
+    .footer-product { font-weight: 700; font-size: .82rem; color: var(--text); letter-spacing: .04em; }
+    .footer-version {
+      font-size: .68rem; font-weight: 600;
+      background: #0f172a; border: 1px solid var(--border);
+      color: var(--accent); padding: .1rem .45rem; border-radius: .3rem;
+    }
+    .footer-meta { font-size: .72rem; color: var(--muted); display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; }
+    .footer-meta strong { color: var(--text); }
+    .footer-sep { color: var(--border); }
+    .footer-links { display: flex; gap: .75rem; }
+    .footer-links a {
+      font-size: .72rem; color: var(--muted); text-decoration: none;
+      border: 1px solid var(--border); border-radius: .3rem; padding: .15rem .5rem;
+      transition: color .15s, border-color .15s;
+    }
+    .footer-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+    .alert { border-radius: .5rem; padding: .6rem 1rem; font-size: .78rem; margin-bottom: .75rem; }
+    .alert-warn { background: #78350f33; border: 1px solid var(--warning); color: var(--warning); }
+    .alert-err  { background: #7f1d1d33; border: 1px solid var(--critical); color: var(--critical); }
+
+    .empty { color: var(--muted); font-size: .85rem; padding: 1rem 0; }
+
+    .toolbar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+    input[type=file] { display: none; }
+    .btn { font-size: .8rem; font-weight: 600; padding: .45rem 1rem; border-radius: .5rem; border: none; cursor: pointer; transition: opacity .15s; }
+    .btn:hover { opacity: .82; }
+    .btn:disabled { opacity: .4; cursor: not-allowed; }
+    .btn-primary { background: var(--accent); color: #0f172a; }
+    .btn-ghost   { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    .btn-live    { background: #14532d; color: var(--healthy); border: 1px solid var(--healthy); }
+    .btn-live.active { background: var(--healthy); color: #0f172a; }
+    #status-msg  { font-size: .75rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⬡ InfraOptimizer</h1>
+  <div class="header-right">
+    <span id="last-run" style="font-size:.75rem;color:var(--muted)">—</span>
+    <span id="health-badge" class="badge-healthy">Healthy</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- Toolbar -->
+  <div class="panel">
+    <h2>Contrôles</h2>
+    <div class="toolbar">
+      <label class="btn btn-ghost" for="file-input">📂 Charger metrics.json</label>
+      <input type="file" id="file-input" accept=".json" onchange="onFileSelected(event)" />
+
+      <button class="btn btn-primary" id="btn-analyze" onclick="analyze()" disabled>▶ Analyser</button>
+
+      <button class="btn btn-ghost" id="btn-refresh" onclick="refresh()">↻ Rafraîchir</button>
+
+      <button class="btn btn-live" id="btn-live" onclick="toggleLive()">
+        <span id="live-dot"></span>Live
+      </button>
+
+      <span id="status-msg"></span>
+    </div>
+  </div>
+
+  <!-- KPI cards -->
+  <div class="cards">
+    <div class="card">
+      <div class="label">CPU moyen</div>
+      <div class="value" id="cpu-avg">—</div>
+      <div class="sub"   id="cpu-max">max —</div>
+    </div>
+    <div class="card">
+      <div class="label">Latence p95</div>
+      <div class="value" id="lat-p95">—</div>
+      <div class="sub"   id="lat-max">max —</div>
+    </div>
+    <div class="card">
+      <div class="label">Stress index</div>
+      <div class="value" id="stress-avg">—</div>
+      <div class="sub"   id="stress-peak">pic —</div>
+    </div>
+    <div class="card">
+      <div class="label">Anomalies</div>
+      <div class="value" id="anom-count">—</div>
+      <div class="sub"   id="anom-crit">dont — critiques</div>
+    </div>
+    <div class="card">
+      <div class="label">Points analysés</div>
+      <div class="value" id="dp-count">—</div>
+      <div class="sub"   id="dp-window">—</div>
+    </div>
+    <div class="card">
+      <div class="label">Mémoire moy.</div>
+      <div class="value" id="mem-avg">—</div>
+      <div class="sub"   id="mem-max">max —</div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="panel">
+    <h2>Évolution — Stress Index (tous les points) · anomalies marquées</h2>
+    <div class="chart-wrap"><canvas id="timeline-chart"></canvas></div>
+  </div>
+
+  <div class="two-col">
+
+    <!-- Anomalies -->
+    <div class="panel">
+      <h2>Anomalies détectées</h2>
+      <div id="anomaly-container"><p class="empty">Lancez une analyse.</p></div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="panel">
+      <h2>Recommandations</h2>
+      <div id="reco-container"><p class="empty">Lancez une analyse.</p></div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">⬡</span>
+      <span class="footer-product">Girafana</span>
+      <span class="footer-version">v1.0.0</span>
+    </div>
+    <div class="footer-meta">
+      <span>Développé par <strong>SBA</strong> pour le compte de <strong>Devoteam</strong></span>
+      <span class="footer-sep">·</span>
+      <span>LangGraph&nbsp;+&nbsp;Claude Code</span>
+      <span class="footer-sep">·</span>
+      <span>Stack : FastAPI · DuckDB · Chart.js</span>
+      <span class="footer-sep">·</span>
+      <span id="footer-year"></span>
+    </div>
+    <div class="footer-links">
+      <a href="/docs" target="_blank" rel="noopener">API Docs</a>
+      <a href="/health" target="_blank" rel="noopener">Health</a>
+      <a href="/metrics" target="_blank" rel="noopener">Metrics</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────────
+let _payload      = null;
+let _chart        = null;
+let _sse          = null;      // EventSource instance
+let _liveMode     = false;
+let _reportId     = null;      // ID of the currently displayed report
+let _feedbackState = {};       // { rec_index: status }
+
+// ── File loading ───────────────────────────────────────────────────────────
+function onFileSelected(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const arr = JSON.parse(ev.target.result);
+      _payload = { metrics: arr, webhooks: [] };
+      setStatus(`${arr.length} points chargés.`, false);
+      document.getElementById('btn-analyze').disabled = false;
+    } catch {
+      setStatus('Fichier JSON invalide.', true);
+    }
+  };
+  reader.readAsText(file);
+}
+
+function setStatus(msg, isErr) {
+  const el = document.getElementById('status-msg');
+  el.textContent = msg;
+  el.style.color = isErr ? 'var(--critical)' : 'var(--muted)';
+}
+
+// ── Analyze (batch) ────────────────────────────────────────────────────────
+async function analyze() {
+  if (!_payload) { setStatus('Chargez un fichier JSON d\'abord.', true); return; }
+  const btn = document.getElementById('btn-analyze');
+  btn.disabled = true;
+  setStatus('Analyse en cours…', false);
+  try {
+    const res = await fetch('/api/analyze', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(_payload),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status} — ${await res.text()}`);
+    render(await res.json());
+    setStatus('Analyse terminée.', false);
+  } catch (err) {
+    setStatus('Erreur : ' + err.message, true);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ── Refresh (pull latest) ──────────────────────────────────────────────────
+async function refresh() {
+  const btn = document.getElementById('btn-refresh');
+  btn.disabled = true;
+  try {
+    const res = await fetch('/api/report/latest');
+    if (res.status === 404) { setStatus('Aucun rapport disponible.', false); return; }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    render(await res.json());
+    setStatus('Rafraîchi.', false);
+  } catch (err) {
+    setStatus('Erreur : ' + err.message, true);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ── Live (SSE) ─────────────────────────────────────────────────────────────
+function toggleLive() {
+  _liveMode ? stopLive() : startLive();
+}
+
+function startLive() {
+  if (_sse) return;
+  _sse = new EventSource('/api/events');
+
+  _sse.onopen = () => {
+    _liveMode = true;
+    document.getElementById('live-dot').classList.add('active');
+    document.getElementById('btn-live').classList.add('active');
+    setStatus('Connecté en live.', false);
+  };
+
+  _sse.onmessage = (e) => {
+    try { render(JSON.parse(e.data)); } catch {}
+  };
+
+  _sse.onerror = () => {
+    setStatus('Connexion SSE perdue — reconnexion…', true);
+  };
+}
+
+function stopLive() {
+  if (_sse) { _sse.close(); _sse = null; }
+  _liveMode = false;
+  document.getElementById('live-dot').classList.remove('active');
+  document.getElementById('btn-live').classList.remove('active');
+  setStatus('Live désactivé.', false);
+}
+
+// Auto-load latest report on page open
+(async () => {
+  try {
+    const res = await fetch('/api/report/latest');
+    if (res.ok) render(await res.json());
+  } catch {}
+})();
+
+// ── Render ─────────────────────────────────────────────────────────────────
+function render(r) {
+  const s  = r.summary;
+  const st = r.statistics;
+
+  const badge = document.getElementById('health-badge');
+  badge.textContent = s.overall_health.toUpperCase();
+  badge.className   = `badge-${s.overall_health}`;
+  document.getElementById('last-run').textContent =
+    'Dernière analyse : ' + new Date(r.generated_at).toLocaleString('fr-FR');
+
+  set('cpu-avg',    pct(st.cpu_usage?.avg));
+  set('cpu-max',    'max ' + pct(st.cpu_usage?.max));
+  set('lat-p95',    ms(st.latency_ms?.p95));
+  set('lat-max',    'max ' + ms(st.latency_ms?.max));
+  set('stress-avg', (s.avg_stress_index  ?? '—') + ' / 100');
+  set('stress-peak','pic ' + (s.peak_stress_index ?? '—'));
+  set('anom-count', s.anomaly_count);
+  set('anom-crit',  `dont ${s.critical_count} critique${s.critical_count !== 1 ? 's' : ''}`);
+  set('dp-count',   r.analysis_window.total_data_points);
+  set('dp-window',  fmtWindow(r.analysis_window));
+  set('mem-avg',    pct(st.memory_usage?.avg));
+  set('mem-max',    'max ' + pct(st.memory_usage?.max));
+
+  _reportId = r.report_id;
+  renderChart(r);
+  renderAnomalies(r.anomalies);
+  renderRecos(r.recommendations, s.recommendation_error);
+  _feedbackState = {};
+  if (r.report_id) loadFeedback(r.report_id);
+}
+
+function set(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val ?? '—';
+}
+const pct = v => v != null ? v.toFixed(1) + '%'   : '—';
+const ms  = v => v != null ? v.toFixed(0) + ' ms' : '—';
+
+function fmtWindow(w) {
+  const d1 = new Date(w.start).toLocaleDateString('fr-FR');
+  const d2 = new Date(w.end).toLocaleDateString('fr-FR');
+  return d1 === d2 ? d1 : `${d1} → ${d2}`;
+}
+
+// ── Chart (full timeline via enrichment) ───────────────────────────────────
+function renderChart(r) {
+  const enrich = r.enrichment || [];
+  if (!enrich.length) return;
+
+  const anomalyTs = new Set((r.anomalies || []).map(a => a.timestamp));
+  const labels = enrich.map(e =>
+    new Date(e.timestamp).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+  );
+  const stress = enrich.map(e => e.stress_index);
+  const ptColors = enrich.map(e =>
+    anomalyTs.has(e.timestamp)
+      ? ((r.anomalies.find(a => a.timestamp === e.timestamp)?.severity === 'critical')
+          ? '#ef4444' : '#f59e0b')
+      : 'transparent'
+  );
+  const ptRadius = enrich.map(e => anomalyTs.has(e.timestamp) ? 5 : 2);
+
+  const ctx = document.getElementById('timeline-chart').getContext('2d');
+  if (_chart) _chart.destroy();
+  _chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label:                'Stress Index',
+        data:                 stress,
+        borderColor:          '#38bdf8',
+        backgroundColor:      'rgba(56,189,248,0.08)',
+        fill:                 true,
+        tension:              .3,
+        pointRadius:          ptRadius,
+        pointBackgroundColor: ptColors,
+        pointBorderColor:     ptColors,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { labels: { color: '#94a3b8', font: { size: 11 } } },
+        tooltip: {
+          callbacks: {
+            afterBody: (items) => {
+              const e = enrich[items[0]?.dataIndex];
+              if (!e) return [];
+              const a = (r.anomalies || []).find(x => x.timestamp === e.timestamp);
+              return a
+                ? [`Sévérité: ${a.severity}`, `Contexte: ${e.time_context}`]
+                : [`Contexte: ${e.time_context}`];
+            }
+          }
+        }
+      },
+      scales: {
+        x: { ticks: { color: '#64748b', maxTicksLimit: 12 }, grid: { color: '#1e293b' } },
+        y: {
+          min: 0, max: 100,
+          ticks: { color: '#64748b' }, grid: { color: '#1e293b' },
+          title: { display: true, text: 'Stress Index', color: '#64748b' }
+        }
+      }
+    }
+  });
+}
+
+// ── Anomalies table ────────────────────────────────────────────────────────
+function renderAnomalies(anomalies) {
+  const el = document.getElementById('anomaly-container');
+  if (!anomalies?.length) { el.innerHTML = '<p class="empty">Aucune anomalie détectée.</p>'; return; }
+
+  const rows = anomalies.map(a => {
+    const tags = [
+      ...a.triggered_metrics.map(m => `<span class="metric-tag">${m.metric} ${m.value}</span>`),
+      ...a.degraded_services.map(s => `<span class="metric-tag" style="color:var(--warning)">${s} dégradé</span>`),
+      ...a.offline_services.map(s  => `<span class="metric-tag" style="color:var(--critical)">${s} offline</span>`),
+    ].join('');
+    const t = new Date(a.timestamp).toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' });
+    return `<tr>
+      <td>${t}</td>
+      <td><span class="sev sev-${a.severity}">${a.severity}</span></td>
+      <td>${tags}</td>
+    </tr>`;
+  }).join('');
+
+  el.innerHTML = `<table>
+    <thead><tr><th>Horodatage</th><th>Sévérité</th><th>Indicateurs</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+// ── Recommendations ────────────────────────────────────────────────────────
+function renderRecos(recos, error) {
+  const el = document.getElementById('reco-container');
+
+  // Surface recommendation_error so the user knows why they're empty
+  if (error) {
+    el.innerHTML = `<div class="alert alert-err">
+      ⚠ Les recommandations n'ont pas pu être générées.<br>
+      <small>${error}</small><br>
+      <small>Vérifiez votre <code>ANTHROPIC_API_KEY</code>.</small>
+    </div>`;
+    return;
+  }
+
+  if (!recos?.length) { el.innerHTML = '<p class="empty">Aucune recommandation.</p>'; return; }
+
+  el.innerHTML = `<div class="rec-list">${
+    recos.map((r, i) => `
+      <div class="rec ${r.priority}">
+        <div class="rec-title">${r.title}</div>
+        <div class="rec-desc">${r.description}</div>
+        <ul class="rec-actions">${r.actions.map(a => `<li>${a}</li>`).join('')}</ul>
+        <div class="rec-feedback">
+          <div class="rec-feedback-label">Retour d'expérience</div>
+          <div class="fb-btns">
+            <button class="fb-btn" id="fb-${i}-resolved"     onclick="submitFeedback(${i},'resolved')">✓ Résolu</button>
+            <button class="fb-btn" id="fb-${i}-partial"      onclick="submitFeedback(${i},'partial')">~ Partiel</button>
+            <button class="fb-btn" id="fb-${i}-not_relevant" onclick="submitFeedback(${i},'not_relevant')">✕ Non applicable</button>
+            <button class="fb-btn" id="fb-${i}-not_tried"    onclick="submitFeedback(${i},'not_tried')">? Pas essayé</button>
+            <span class="fb-saved" id="fb-saved-${i}">Sauvegardé ✓</span>
+          </div>
+        </div>
+      </div>`
+    ).join('')
+  }</div>`;
+}
+
+// ── Feedback ───────────────────────────────────────────────────────────────
+async function loadFeedback(reportId) {
+  try {
+    const res = await fetch(`/api/reports/${reportId}/feedback`);
+    if (!res.ok) { _feedbackState = {}; return; }
+    const data = await res.json();
+    _feedbackState = {};
+    for (const item of data.items) {
+      _feedbackState[item.rec_index] = item.status;
+      applyFeedbackState(item.rec_index, item.status);
+    }
+  } catch {}
+}
+
+async function submitFeedback(recIndex, status) {
+  if (!_reportId) return;
+  _feedbackState[recIndex] = status;
+  applyFeedbackState(recIndex, status);
+  try {
+    await fetch(`/api/reports/${_reportId}/feedback`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({
+        report_id:    _reportId,
+        submitted_at: new Date().toISOString(),
+        items:        [{ rec_index: recIndex, status }],
+      }),
+    });
+    const saved = document.getElementById(`fb-saved-${recIndex}`);
+    if (saved) { saved.classList.add('show'); setTimeout(() => saved.classList.remove('show'), 2000); }
+  } catch {}
+}
+
+function applyFeedbackState(recIndex, status) {
+  ['resolved', 'partial', 'not_relevant', 'not_tried'].forEach(s => {
+    const btn = document.getElementById(`fb-${recIndex}-${s}`);
+    if (btn) btn.className = 'fb-btn' + (s === status ? ` active-${s}` : '');
+  });
+}
+
+// Footer — current year
+document.getElementById('footer-year').textContent =
+  '© ' + new Date().getFullYear() + ' Devoteam. Tous droits réservés.';
+</script>
+</body>
+</html>

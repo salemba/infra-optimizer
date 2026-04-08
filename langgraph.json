@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "infra_optimizer": "./app/graph.py:graph"
+  },
+  "env": ".env"
+}
