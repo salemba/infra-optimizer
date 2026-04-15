@@ -1,0 +1,139 @@
+{
+  "report_id": "a3f1c2d4-e5b6-7890-abcd-ef1234567890",
+  "generated_at": "2026-04-07T10:00:00+00:00",
+  "analysis_window": {
+    "start": "2023-10-01T12:00:00+00:00",
+    "end": "2023-10-03T06:00:00+00:00",
+    "total_data_points": 144
+  },
+  "summary": {
+    "overall_health": "critical",
+    "anomaly_count": 28,
+    "critical_count": 5,
+    "warning_count": 23
+  },
+  "statistics": {
+    "cpu_usage":           { "min": 52.0,  "max": 93.0,  "avg": 63.1, "p95": 88.0  },
+    "memory_usage":        { "min": 62.0,  "max": 87.0,  "avg": 70.2, "p95": 84.0  },
+    "latency_ms":          { "min": 117.0, "max": 369.0, "avg": 156.3,"p95": 295.0 },
+    "disk_usage":          { "min": 58.0,  "max": 90.0,  "avg": 65.4, "p95": 85.0  },
+    "temperature_celsius": { "min": 58.0,  "max": 85.0,  "avg": 64.2, "p95": 80.0  },
+    "error_rate":          { "min": 0.02,  "max": 0.12,  "avg": 0.032,"p95": 0.11  },
+    "io_wait":             { "min": 2.0,   "max": 12.0,  "avg": 3.6,  "p95": 10.0  }
+  },
+  "anomalies": [
+    {
+      "timestamp": "2023-10-01T12:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        { "metric": "cpu_usage",           "value": 93,   "threshold": 90,   "severity": "critical" },
+        { "metric": "memory_usage",        "value": 86,   "threshold": 75,   "severity": "warning"  },
+        { "metric": "latency_ms",          "value": 334,  "threshold": 300,  "severity": "critical" },
+        { "metric": "disk_usage",          "value": 89,   "threshold": 75,   "severity": "warning"  },
+        { "metric": "temperature_celsius", "value": 84,   "threshold": 82,   "severity": "critical" },
+        { "metric": "error_rate",          "value": 0.12, "threshold": 0.10, "severity": "critical" },
+        { "metric": "io_wait",             "value": 12,   "threshold": 10,   "severity": "critical" }
+      ],
+      "degraded_services": ["api_gateway"],
+      "offline_services": []
+    },
+    {
+      "timestamp": "2023-10-01T15:00:00+00:00",
+      "severity": "warning",
+      "triggered_metrics": [
+        { "metric": "cpu_usage",    "value": 73,  "threshold": 75,  "severity": "warning" },
+        { "metric": "memory_usage", "value": 79,  "threshold": 75,  "severity": "warning" },
+        { "metric": "latency_ms",   "value": 213, "threshold": 200, "severity": "warning" },
+        { "metric": "disk_usage",   "value": 77,  "threshold": 75,  "severity": "warning" }
+      ],
+      "degraded_services": ["api_gateway", "cache"],
+      "offline_services": []
+    },
+    {
+      "timestamp": "2023-10-02T02:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": ["database"]
+    },
+    {
+      "timestamp": "2023-10-03T04:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        { "metric": "cpu_usage",           "value": 93,   "threshold": 90,   "severity": "critical" },
+        { "metric": "memory_usage",        "value": 87,   "threshold": 75,   "severity": "warning"  },
+        { "metric": "latency_ms",          "value": 369,  "threshold": 300,  "severity": "critical" },
+        { "metric": "disk_usage",          "value": 90,   "threshold": 88,   "severity": "critical" },
+        { "metric": "temperature_celsius", "value": 85,   "threshold": 82,   "severity": "critical" },
+        { "metric": "error_rate",          "value": 0.11, "threshold": 0.10, "severity": "critical" },
+        { "metric": "io_wait",             "value": 12,   "threshold": 10,   "severity": "critical" }
+      ],
+      "degraded_services": ["api_gateway"],
+      "offline_services": []
+    },
+    {
+      "timestamp": "2023-10-03T06:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": ["database"]
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "category": "resource_scaling",
+      "title": "Répartition de charge CPU — pics critiques récurrents",
+      "description": "Le CPU atteint 93% à deux reprises (12h00 et 04h00), dépassant le seuil critique de 90%. Ces pics s'accompagnent d'une latence >300ms et d'un io_wait à 12, indiquant une saturation globale des ressources.",
+      "actions": [
+        "Activer l'auto-scaling horizontal (ajout d'instances) déclenché à 80% de CPU soutenu sur 5 minutes",
+        "Mettre en place un load balancer (nginx/HAProxy) pour distribuer les requêtes entrantes",
+        "Analyser les processus consommateurs via `top`/`htop` lors des prochains pics pour identifier les hotspots"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "service_recovery",
+      "title": "Incidents de base de données — pannes répétées",
+      "description": "La base de données passe hors-ligne à deux reprises (02:30 et 06:00 le 02-03/10). Ces pannes silencieuses risquent de provoquer des pertes de données et des erreurs applicatives en cascade.",
+      "actions": [
+        "Configurer une réplication primaire/secondaire (réplication synchrone ou semi-synchrone)",
+        "Implémenter un mécanisme de failover automatique (ex. Patroni pour PostgreSQL, MHA pour MySQL)",
+        "Mettre en place des alertes PagerDuty/Opsgenie sur le statut du service base de données"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "monitoring",
+      "title": "Surchauffe thermique — température > 82°C",
+      "description": "La température atteint 84-85°C lors des pics CPU, dépassant le seuil critique. Un throttling thermique peut aggraver la latence et risquer d'endommager le matériel.",
+      "actions": [
+        "Vérifier et nettoyer le système de refroidissement (ventilateurs, ventirad)",
+        "Mettre en place un monitoring thermique avec alerte à 78°C pour anticipation",
+        "Envisager un plafonnement CPU (CPU throttle) à 88% pour éviter la zone critique"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "load_balancing",
+      "title": "Dégradation récurrente api_gateway et cache (15h-17h30)",
+      "description": "L'api_gateway et le cache sont dégradés pendant plus de 2h30 consécutives en pic d'activité. Cela amplifie la latence et le taux d'erreur.",
+      "actions": [
+        "Dimensionner le cache (Redis/Memcached) avec une politique d'éviction LRU adaptée à la charge de pointe",
+        "Activer le circuit breaker sur l'api_gateway pour isoler les services défaillants",
+        "Analyser les logs applicatifs sur la plage 14h30-18h pour identifier la cause racine"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "capacity_planning",
+      "title": "Disque > 88% — risque de saturation",
+      "description": "Le disque dépasse 89-90% lors des pics, ce qui peut bloquer les writes et provoquer des crashs applicatifs si le disque est saturé.",
+      "actions": [
+        "Purger les logs anciens et activer la rotation automatique (logrotate)",
+        "Ajouter de la capacité disque ou migrer vers du stockage distribué (NFS, EBS, Ceph)",
+        "Mettre une alerte à 80% pour anticiper avant d'atteindre la limite"
+      ]
+    }
+  ]
+}

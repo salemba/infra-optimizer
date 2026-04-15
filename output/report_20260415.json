@@ -1,0 +1,3501 @@
+{
+  "report_id": "bb7d0647-6ddc-4961-a992-e8758ce0b146",
+  "generated_at": "2026-04-15T08:22:26.005532+00:00",
+  "analysis_window": {
+    "start": "2023-10-01T12:00:00+00:00",
+    "end": "2023-10-03T06:00:00+00:00",
+    "total_data_points": 85
+  },
+  "summary": {
+    "overall_health": "critical",
+    "anomaly_count": 27,
+    "critical_count": 27,
+    "warning_count": 0,
+    "avg_stress_index": 64.5,
+    "peak_stress_index": 100.0,
+    "recommendation_error": null
+  },
+  "statistics": {
+    "cpu_usage": {
+      "min": 52.0,
+      "max": 99.0,
+      "avg": 61.153,
+      "p95": 97.0
+    },
+    "memory_usage": {
+      "min": 62.0,
+      "max": 92.0,
+      "avg": 67.871,
+      "p95": 87.0
+    },
+    "latency_ms": {
+      "min": 113.0,
+      "max": 380.0,
+      "avg": 158.624,
+      "p95": 355.0
+    },
+    "disk_usage": {
+      "min": 57.0,
+      "max": 92.0,
+      "avg": 64.353,
+      "p95": 89.0
+    },
+    "temperature_celsius": {
+      "min": 57.0,
+      "max": 88.0,
+      "avg": 63.259,
+      "p95": 85.0
+    },
+    "error_rate": {
+      "min": 0.02,
+      "max": 0.13,
+      "avg": 0.032,
+      "p95": 0.12
+    },
+    "io_wait": {
+      "min": 2.0,
+      "max": 14.0,
+      "avg": 4.012,
+      "p95": 12.0
+    }
+  },
+  "enrichment": [
+    {
+      "timestamp": "2023-10-01T12:00:00+00:00",
+      "stress_index": 99.5,
+      "trend": {
+        "cpu_usage": "stable",
+        "memory_usage": "stable",
+        "latency_ms": "stable",
+        "disk_usage": "stable",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T12:30:00+00:00",
+      "stress_index": 60.1,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T13:00:00+00:00",
+      "stress_index": 60.3,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T13:30:00+00:00",
+      "stress_index": 58.2,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T14:00:00+00:00",
+      "stress_index": 58.0,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T14:30:00+00:00",
+      "stress_index": 58.2,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T15:00:00+00:00",
+      "stress_index": 78.7,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T15:30:00+00:00",
+      "stress_index": 78.3,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T16:00:00+00:00",
+      "stress_index": 78.8,
+      "trend": {
+        "cpu_usage": "stable",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": true,
+        "latency_ms": true,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": true
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T16:30:00+00:00",
+      "stress_index": 78.1,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": true,
+        "latency_ms": true,
+        "disk_usage": false,
+        "temperature_celsius": true,
+        "error_rate": false,
+        "io_wait": true
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T17:00:00+00:00",
+      "stress_index": 80.2,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "stable",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": true,
+        "latency_ms": true,
+        "disk_usage": true,
+        "temperature_celsius": true,
+        "error_rate": false,
+        "io_wait": true
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T17:30:00+00:00",
+      "stress_index": 78.1,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": true,
+        "latency_ms": true,
+        "disk_usage": false,
+        "temperature_celsius": true,
+        "error_rate": false,
+        "io_wait": true
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T18:00:00+00:00",
+      "stress_index": 58.5,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T18:30:00+00:00",
+      "stress_index": 58.3,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T19:00:00+00:00",
+      "stress_index": 57.8,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "stable",
+        "latency_ms": "falling",
+        "disk_usage": "stable",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T19:30:00+00:00",
+      "stress_index": 72.2,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "stable",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T20:00:00+00:00",
+      "stress_index": 59.6,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T20:30:00+00:00",
+      "stress_index": 57.4,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T21:00:00+00:00",
+      "stress_index": 59.4,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T21:30:00+00:00",
+      "stress_index": 58.3,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T22:00:00+00:00",
+      "stress_index": 100.0,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T22:30:00+00:00",
+      "stress_index": 61.4,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "stable",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T23:00:00+00:00",
+      "stress_index": 57.6,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T23:30:00+00:00",
+      "stress_index": 59.2,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "rising",
+        "latency_ms": "stable",
+        "disk_usage": "stable",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T00:00:00+00:00",
+      "stress_index": 57.8,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T00:30:00+00:00",
+      "stress_index": 58.5,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "stable",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T01:00:00+00:00",
+      "stress_index": 58.5,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T01:30:00+00:00",
+      "stress_index": 58.0,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T02:00:00+00:00",
+      "stress_index": 59.3,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T02:30:00+00:00",
+      "stress_index": 57.8,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "rising",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T03:00:00+00:00",
+      "stress_index": 99.8,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T03:30:00+00:00",
+      "stress_index": 58.9,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "stable",
+        "latency_ms": "stable",
+        "disk_usage": "stable",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T04:00:00+00:00",
+      "stress_index": 58.0,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T04:30:00+00:00",
+      "stress_index": 59.3,
+      "trend": {
+        "cpu_usage": "stable",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T05:00:00+00:00",
+      "stress_index": 59.9,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T05:30:00+00:00",
+      "stress_index": 58.5,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T06:00:00+00:00",
+      "stress_index": 59.2,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T06:30:00+00:00",
+      "stress_index": 58.1,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T07:00:00+00:00",
+      "stress_index": 59.4,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T07:30:00+00:00",
+      "stress_index": 57.1,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T08:00:00+00:00",
+      "stress_index": 100.0,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T08:30:00+00:00",
+      "stress_index": 59.0,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "rising",
+        "latency_ms": "stable",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T09:00:00+00:00",
+      "stress_index": 60.3,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T09:30:00+00:00",
+      "stress_index": 58.1,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T10:00:00+00:00",
+      "stress_index": 58.7,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "stable",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T10:30:00+00:00",
+      "stress_index": 72.6,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T11:00:00+00:00",
+      "stress_index": 58.7,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T11:30:00+00:00",
+      "stress_index": 57.9,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "stable",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T12:00:00+00:00",
+      "stress_index": 58.1,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T12:30:00+00:00",
+      "stress_index": 58.1,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "stable",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T13:00:00+00:00",
+      "stress_index": 100.0,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T13:30:00+00:00",
+      "stress_index": 56.9,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "stable",
+        "latency_ms": "stable",
+        "disk_usage": "stable",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T14:00:00+00:00",
+      "stress_index": 57.9,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T14:30:00+00:00",
+      "stress_index": 58.0,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T15:00:00+00:00",
+      "stress_index": 57.9,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T15:30:00+00:00",
+      "stress_index": 58.4,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T16:00:00+00:00",
+      "stress_index": 59.1,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T16:30:00+00:00",
+      "stress_index": 58.0,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "rising",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T17:00:00+00:00",
+      "stress_index": 58.6,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "rising",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T17:30:00+00:00",
+      "stress_index": 58.2,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "stable",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T18:00:00+00:00",
+      "stress_index": 100.0,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T18:30:00+00:00",
+      "stress_index": 59.4,
+      "trend": {
+        "cpu_usage": "stable",
+        "memory_usage": "rising",
+        "latency_ms": "stable",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T19:00:00+00:00",
+      "stress_index": 57.8,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T19:30:00+00:00",
+      "stress_index": 59.4,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T20:00:00+00:00",
+      "stress_index": 58.7,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T20:30:00+00:00",
+      "stress_index": 59.2,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T21:00:00+00:00",
+      "stress_index": 58.3,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T21:30:00+00:00",
+      "stress_index": 58.3,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "stable",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T22:00:00+00:00",
+      "stress_index": 58.7,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "rising",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T22:30:00+00:00",
+      "stress_index": 57.8,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "stable",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T23:00:00+00:00",
+      "stress_index": 99.1,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T23:30:00+00:00",
+      "stress_index": 58.4,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "stable",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T00:00:00+00:00",
+      "stress_index": 59.5,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T00:30:00+00:00",
+      "stress_index": 57.4,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "stable",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T01:00:00+00:00",
+      "stress_index": 60.3,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "stable",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T01:30:00+00:00",
+      "stress_index": 75.4,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T02:00:00+00:00",
+      "stress_index": 59.5,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "stable",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T02:30:00+00:00",
+      "stress_index": 58.5,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T03:00:00+00:00",
+      "stress_index": 60.6,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T03:30:00+00:00",
+      "stress_index": 58.7,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T04:00:00+00:00",
+      "stress_index": 99.8,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T04:30:00+00:00",
+      "stress_index": 60.7,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "stable",
+        "disk_usage": "stable",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T05:00:00+00:00",
+      "stress_index": 59.1,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T05:30:00+00:00",
+      "stress_index": 58.5,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T06:00:00+00:00",
+      "stress_index": 59.3,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    }
+  ],
+  "anomalies": [
+    {
+      "timestamp": "2023-10-01T12:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "cpu_usage",
+          "value": 93.0,
+          "threshold": 90.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "memory_usage",
+          "value": 86.0,
+          "threshold": 75.0,
+          "severity": "warning"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 334.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 89.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 84.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "error_rate",
+          "value": 0.12,
+          "threshold": 0.1,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 12.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway"
+      ],
+      "offline_services": [],
+      "stress_index": 99.5,
+      "trend": {
+        "cpu_usage": "stable",
+        "memory_usage": "stable",
+        "latency_ms": "stable",
+        "disk_usage": "stable",
+        "temperature_celsius": "stable",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T15:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "memory_usage",
+          "value": 79.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 213.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 77.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 6.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway",
+        "cache"
+      ],
+      "offline_services": [],
+      "stress_index": 78.7,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T15:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "memory_usage",
+          "value": 76.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 232.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 71.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 5.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway",
+        "cache"
+      ],
+      "offline_services": [],
+      "stress_index": 78.3,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T16:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "memory_usage",
+          "value": 75.0,
+          "threshold": 75.0,
+          "severity": "warning"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 225.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 76.0,
+          "threshold": 75.0,
+          "severity": "warning"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 70.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 6.0,
+          "threshold": 5.0,
+          "severity": "warning"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway",
+        "cache"
+      ],
+      "offline_services": [],
+      "stress_index": 78.8,
+      "trend": {
+        "cpu_usage": "stable",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": true,
+        "latency_ms": true,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": true
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T16:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "cpu_usage",
+          "value": 75.0,
+          "threshold": 90.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "memory_usage",
+          "value": 75.0,
+          "threshold": 75.0,
+          "severity": "warning"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 200.0,
+          "threshold": 200.0,
+          "severity": "warning"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 76.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 73.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 6.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway",
+        "cache"
+      ],
+      "offline_services": [],
+      "stress_index": 78.1,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": true,
+        "latency_ms": true,
+        "disk_usage": false,
+        "temperature_celsius": true,
+        "error_rate": false,
+        "io_wait": true
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T17:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "cpu_usage",
+          "value": 76.0,
+          "threshold": 90.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "memory_usage",
+          "value": 78.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 224.0,
+          "threshold": 200.0,
+          "severity": "warning"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 77.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 72.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 5.0,
+          "threshold": 5.0,
+          "severity": "warning"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway",
+        "cache"
+      ],
+      "offline_services": [],
+      "stress_index": 80.2,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "stable",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": true,
+        "latency_ms": true,
+        "disk_usage": true,
+        "temperature_celsius": true,
+        "error_rate": false,
+        "io_wait": true
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T17:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "memory_usage",
+          "value": 77.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 217.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 72.0,
+          "threshold": 70.0,
+          "severity": "warning"
+        },
+        {
+          "metric": "io_wait",
+          "value": 5.0,
+          "threshold": 5.0,
+          "severity": "warning"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway",
+        "cache"
+      ],
+      "offline_services": [],
+      "stress_index": 78.1,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": true,
+        "latency_ms": true,
+        "disk_usage": false,
+        "temperature_celsius": true,
+        "error_rate": false,
+        "io_wait": true
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-01T19:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": [
+        "database"
+      ],
+      "stress_index": 57.8,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "stable",
+        "latency_ms": "falling",
+        "disk_usage": "stable",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T19:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "error_rate",
+          "value": 0.05,
+          "threshold": 0.1,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 5.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "cache"
+      ],
+      "offline_services": [],
+      "stress_index": 72.2,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "stable",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T22:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "cpu_usage",
+          "value": 98.0,
+          "threshold": 90.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "memory_usage",
+          "value": 88.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 368.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 90.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 86.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "error_rate",
+          "value": 0.11,
+          "threshold": 0.1,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 14.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway"
+      ],
+      "offline_services": [],
+      "stress_index": 100.0,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-01T22:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": [
+        "database"
+      ],
+      "stress_index": 61.4,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "stable",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T02:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": [
+        "database"
+      ],
+      "stress_index": 59.3,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "rising",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T03:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "cpu_usage",
+          "value": 93.0,
+          "threshold": 90.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "memory_usage",
+          "value": 87.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 369.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 88.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 88.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "error_rate",
+          "value": 0.12,
+          "threshold": 0.1,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 13.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway"
+      ],
+      "offline_services": [],
+      "stress_index": 99.8,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T05:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": [
+        "database"
+      ],
+      "stress_index": 58.5,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T08:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "cpu_usage",
+          "value": 97.0,
+          "threshold": 90.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "memory_usage",
+          "value": 91.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 355.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 89.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 85.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "error_rate",
+          "value": 0.12,
+          "threshold": 0.1,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 11.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway"
+      ],
+      "offline_services": [],
+      "stress_index": 100.0,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T09:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": [
+        "database"
+      ],
+      "stress_index": 60.3,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T10:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "latency_ms",
+          "value": 208.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "error_rate",
+          "value": 0.05,
+          "threshold": 0.1,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 5.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "cache"
+      ],
+      "offline_services": [],
+      "stress_index": 72.6,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T12:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": [
+        "database"
+      ],
+      "stress_index": 58.1,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "stable",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T13:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "cpu_usage",
+          "value": 99.0,
+          "threshold": 90.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "memory_usage",
+          "value": 92.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 327.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 92.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 87.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "error_rate",
+          "value": 0.12,
+          "threshold": 0.1,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 10.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway"
+      ],
+      "offline_services": [],
+      "stress_index": 100.0,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T16:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": [
+        "database"
+      ],
+      "stress_index": 59.1,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "rising",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T18:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "cpu_usage",
+          "value": 98.0,
+          "threshold": 90.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "memory_usage",
+          "value": 88.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 380.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 90.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 88.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "error_rate",
+          "value": 0.13,
+          "threshold": 0.1,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 13.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway"
+      ],
+      "offline_services": [],
+      "stress_index": 100.0,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "peak"
+    },
+    {
+      "timestamp": "2023-10-02T19:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": [
+        "database"
+      ],
+      "stress_index": 59.4,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-02T23:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "cpu_usage",
+          "value": 97.0,
+          "threshold": 90.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "memory_usage",
+          "value": 84.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 349.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 89.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 83.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "error_rate",
+          "value": 0.12,
+          "threshold": 0.1,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 10.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway"
+      ],
+      "offline_services": [],
+      "stress_index": 99.1,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T01:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "latency_ms",
+          "value": 213.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "error_rate",
+          "value": 0.05,
+          "threshold": 0.1,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 6.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "cache"
+      ],
+      "offline_services": [],
+      "stress_index": 75.4,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T02:30:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": [
+        "database"
+      ],
+      "stress_index": 58.5,
+      "trend": {
+        "cpu_usage": "falling",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "falling",
+        "io_wait": "falling"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T04:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [
+        {
+          "metric": "cpu_usage",
+          "value": 93.0,
+          "threshold": 90.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "memory_usage",
+          "value": 87.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "latency_ms",
+          "value": 369.0,
+          "threshold": 300.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "disk_usage",
+          "value": 90.0,
+          "threshold": 88.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "temperature_celsius",
+          "value": 85.0,
+          "threshold": 82.0,
+          "severity": "critical"
+        },
+        {
+          "metric": "error_rate",
+          "value": 0.11,
+          "threshold": 0.1,
+          "severity": "critical"
+        },
+        {
+          "metric": "io_wait",
+          "value": 12.0,
+          "threshold": 10.0,
+          "severity": "critical"
+        }
+      ],
+      "degraded_services": [
+        "api_gateway"
+      ],
+      "offline_services": [],
+      "stress_index": 99.8,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "rising",
+        "latency_ms": "rising",
+        "disk_usage": "rising",
+        "temperature_celsius": "rising",
+        "error_rate": "rising",
+        "io_wait": "rising"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    },
+    {
+      "timestamp": "2023-10-03T06:00:00+00:00",
+      "severity": "critical",
+      "triggered_metrics": [],
+      "degraded_services": [],
+      "offline_services": [
+        "database"
+      ],
+      "stress_index": 59.3,
+      "trend": {
+        "cpu_usage": "rising",
+        "memory_usage": "falling",
+        "latency_ms": "falling",
+        "disk_usage": "falling",
+        "temperature_celsius": "falling",
+        "error_rate": "stable",
+        "io_wait": "stable"
+      },
+      "sustained": {
+        "cpu_usage": false,
+        "memory_usage": false,
+        "latency_ms": false,
+        "disk_usage": false,
+        "temperature_celsius": false,
+        "error_rate": false,
+        "io_wait": false
+      },
+      "time_context": "off-peak"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "category": "resource_scaling",
+      "title": "Scaling CPU urgent — saturation critique avec pics à 99%",
+      "description": "Le CPU atteint 99% en max et 97% au p95, avec une moyenne à 61% qui masque des pics extrêmes. Le stress index atteint 99.5 même en off-peak (12h00), ce qui indique une insuffisance structurelle de capacité compute. Les tendances sont en hausse (rising) sur toutes les métriques pendant les heures de pointe (15h00-15h30), ce qui laisse présager une dégradation encore plus sévère si le trafic augmente.",
+      "actions": [
+        "Ajouter immédiatement des instances compute (scale-out horizontal) ou augmenter les vCPU (scale-up vertical)",
+        "Activer l'auto-scaling avec un seuil de déclenchement à 70% CPU pour anticiper les pics",
+        "Identifier et optimiser les processus les plus consommateurs via profiling (top, perf, flamegraphs)",
+        "Planifier une revue d'architecture pour répartir la charge applicative sur davantage de nœuds"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "capacity_planning",
+      "title": "Disque proche de la saturation — 92% max, p95 à 89%",
+      "description": "L'utilisation disque atteint 92% en pointe avec un p95 à 89%, et la tendance est rising pendant les heures de peak. Une saturation disque entraînerait une indisponibilité totale des services. Le seuil critique (88%) est régulièrement franchi.",
+      "actions": [
+        "Étendre immédiatement les volumes de stockage ou ajouter des disques supplémentaires",
+        "Mettre en place une rotation et purge des logs, fichiers temporaires et anciens snapshots",
+        "Configurer des alertes proactives à 75% et 85% d'utilisation disque",
+        "Évaluer la migration vers un stockage extensible automatiquement (ex: EBS auto-expand, PV dynamiques Kubernetes)",
+        "Auditer la croissance des données pour établir un plan de capacité à 3-6 mois"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "service_recovery",
+      "title": "Dégradation persistante de l'API Gateway et du cache",
+      "description": "Le service api_gateway est dégradé sur l'ensemble des snapshots critiques (off-peak et peak). Le service cache rejoint la dégradation pendant les heures de pointe. Avec 27 anomalies critiques, la dégradation est quasi-continue et impacte directement les utilisateurs finaux.",
+      "actions": [
+        "Investiguer immédiatement les causes de dégradation de l'api_gateway : logs d'erreurs, connexions pendantes, saturation des threads/workers",
+        "Redémarrer ou scaler les instances de l'api_gateway si le problème est lié à des fuites mémoire ou des connexions zombies",
+        "Vérifier la santé du service cache (Redis/Memcached) : évictions, hit ratio, mémoire disponible, connexions max",
+        "Mettre en place un circuit breaker et des mécanismes de retry avec backoff exponentiel côté appelants",
+        "Déployer des health checks renforcés avec basculement automatique sur des instances saines"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "load_balancing",
+      "title": "Latence critique avec pics à 380ms et taux d'erreur élevé",
+      "description": "La latence atteint 380ms (max) et 355ms au p95, dépassant largement le seuil critique de 300ms. Le taux d'erreur monte à 13% (max) contre un seuil de 10%. Ces deux métriques sont corrélées à la saturation CPU et à l'IO wait élevé, suggérant un problème de distribution de charge.",
+      "actions": [
+        "Vérifier la configuration du load balancer : algorithme de répartition, sticky sessions, health checks backend",
+        "Ajouter des backends au pool du load balancer pour absorber la charge",
+        "Activer le rate limiting et le request queuing pour protéger les backends en cas de surcharge",
+        "Mettre en cache les réponses fréquentes au niveau du reverse proxy (CDN, Varnish) pour réduire la pression backend",
+        "Analyser les requêtes lentes (slow queries, appels externes) contribuant à la latence élevée"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "resource_scaling",
+      "title": "Mémoire sous pression — 92% max, p95 à 87%",
+      "description": "La mémoire atteint 92% en pic et 87% au p95, dépassant le seuil warning de 75% de façon quasi-permanente. Combinée à une tendance rising en période peak, le risque d'OOM kill est élevé, ce qui entraînerait des interruptions de service non contrôlées.",
+      "actions": [
+        "Augmenter la RAM des instances ou migrer vers des types d'instances à plus haute mémoire",
+        "Identifier les processus à forte consommation mémoire et optimiser (fuites mémoire, caches applicatifs surdimensionnés)",
+        "Configurer des limites mémoire par service (cgroups, limites containers) pour éviter qu'un seul service monopolise la RAM",
+        "Activer le swap monitoring et configurer des alertes OOM pré-emptives"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "resource_scaling",
+      "title": "IO Wait critique impactant les performances globales",
+      "description": "L'IO wait atteint 14% en max (p95 à 12%) contre un seuil de 10%, corrélé directement avec la saturation disque et la latence élevée. En off-peak, l'IO wait est déjà à 12%, indiquant un goulot d'étranglement I/O structurel et non uniquement lié au trafic.",
+      "actions": [
+        "Migrer vers des disques à plus hautes IOPS (SSD NVMe, io2/gp3 provisioned IOPS)",
+        "Identifier les processus générateurs d'I/O excessives (iotop, iostat) et optimiser les patterns d'écriture",
+        "Déplacer les workloads I/O-intensifs (logs, bases de données) sur des volumes dédiés",
+        "Évaluer la mise en place de caching en mémoire pour réduire les lectures disque répétitives"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "monitoring",
+      "title": "Température serveur critique — risque de throttling matériel",
+      "description": "La température atteint 88°C en max (p95 à 85°C) contre un seuil critique de 82°C. Les processeurs modernes réduisent automatiquement leur fréquence (thermal throttling) au-delà de 85°C, ce qui aggrave la dégradation des performances CPU déjà constatée. La tendance rising en peak accentue le risque.",
+      "actions": [
+        "Vérifier le système de refroidissement : ventilateurs, climatisation de la salle serveur, flux d'air",
+        "Si cloud/virtualisation : vérifier l'absence de noisy neighbors et demander une migration de VM si nécessaire",
+        "Corréler les pics de température avec les pics CPU pour confirmer le thermal throttling",
+        "Installer des sondes de température avec alertes à 78°C (warning) et 82°C (critical)",
+        "Planifier une réduction de la densité de charge par serveur via redistribution des workloads"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "monitoring",
+      "title": "Renforcer le monitoring et l'alerting face aux 27 anomalies critiques",
+      "description": "27 anomalies critiques ont été détectées sans aucun warning intermédiaire (0 warnings), ce qui suggère soit des seuils warning trop proches des seuils critiques, soit un système d'alerting qui ne capture pas les dégradations progressives. Les tendances rising sur toutes les métriques en peak n'ont pas déclenché d'actions préventives.",
+      "actions": [
+        "Recalibrer les seuils warning pour qu'ils déclenchent plus tôt : CPU 75%, mémoire 70%, disque 75%, latence 200ms",
+        "Implémenter des alertes basées sur les tendances (rate of change) et pas uniquement sur les seuils statiques",
+        "Mettre en place des dashboards temps réel avec corrélation multi-métriques (stress index visible)",
+        "Configurer des runbooks automatisés (PagerDuty/OpsGenie) pour les scénarios récurrents identifiés",
+        "Ajouter du monitoring applicatif (APM) sur l'api_gateway et le cache pour une observabilité end-to-end"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "capacity_planning",
+      "title": "Plan de capacité global — tendances rising sur toutes les métriques en peak",
+      "description": "Toutes les métriques affichent une tendance rising simultanée pendant les heures de pointe (15h00-15h30), avec un stress index déjà à 78+ en peak alors qu'il dépasse 99 en off-peak sur certains snapshots. La croissance de la charge est uniforme et structurelle, nécessitant un plan de capacité multi-dimensionnel.",
+      "actions": [
+        "Réaliser un capacity planning formel basé sur les projections de trafic à 1, 3 et 6 mois",
+        "Provisionner 40% de headroom minimum sur chaque ressource (CPU, RAM, disque, IOPS)",
+        "Évaluer une architecture de scaling horizontal avec répartition géographique si applicable",
+        "Planifier des tests de charge réguliers pour valider les limites de l'infrastructure",
+        "Budgétiser l'extension d'infrastructure nécessaire et prioriser les composants les plus critiques (CPU > disque > mémoire)"
+      ]
+    }
+  ]
+}

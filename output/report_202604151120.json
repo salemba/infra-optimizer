@@ -1,0 +1,14 @@
+{
+  "target_timestamp": "2023-10-11T22:00:00+00:00",
+  "severity": "healthy",
+  "predicted_metrics": {
+    "cpu_usage": 51.5,
+    "memory_usage": 69.5,
+    "latency_ms": 140.0,
+    "disk_usage": 58.0,
+    "temperature_celsius": 61.5,
+    "error_rate": 0.02,
+    "io_wait": 2.5
+  },
+  "recommendations": []
+}
