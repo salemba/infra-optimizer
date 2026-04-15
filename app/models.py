@@ -49,6 +49,12 @@ class AnalyzeRequest(BaseModel):
     webhooks: list[str] = []
 
 
+class PredictRequest (BaseModel):
+    metrics: Annotated [list[MetricPoint], Field(min_length=1)]
+    
+    webhooks: list[str] = []
+
+
 # ── Output ─────────────────────────────────────────────────────────────────
 
 class TriggeredMetric(BaseModel):
@@ -121,6 +127,16 @@ class BufferStatus(BaseModel):
     """Current state of the streaming metric buffer."""
     size:     int
     capacity: int
+
+
+# ── Prediction ─────────────────────────────────────────────────────────────
+
+class PredictionResult(BaseModel):
+    """Single-point forecast returned by the predict node."""
+    target_timestamp:  str
+    severity:          Literal["healthy", "warning", "critical"]
+    predicted_metrics: dict[str, float]   # metric → predicted value
+    recommendations:   list[Recommendation]  # empty when severity == "healthy"
 
 
 # ── Feedback ───────────────────────────────────────────────────────────────

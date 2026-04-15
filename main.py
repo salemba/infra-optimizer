@@ -54,20 +54,43 @@ def serve() -> None:
     )
 
 
-def cli(metrics_file: str, output_file: str) -> None:
-    from app.models import AnalyzeRequest, MetricPoint
+def cli(metrics_file: str, output_file: str, is_prediction: bool  ) -> None:
+    from app.models import AnalyzeRequest, PredictRequest, MetricPoint
+    from app.predective.predict import predict
     from app.graph import run
-
+    logger.info("cli_start", extra={"metrics_file": metrics_file, "output_file": output_file, "predict": predict})
     with open(metrics_file, encoding="utf-8") as f:
         raw = json.load(f)
 
-    request = AnalyzeRequest(metrics=[MetricPoint(**p) for p in raw])
-    report  = run(request)
+    if not is_prediction:
 
-    os.makedirs(os.path.dirname(output_file) or ".", exist_ok=True)
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump(report.model_dump(), f, indent=2, ensure_ascii=False, default=str)
+        request = AnalyzeRequest(metrics=[MetricPoint(**p) for p in raw])
+        report  = run(request)
+        os.makedirs(os.path.dirname(output_file) or ".", exist_ok=True)
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(report.model_dump(), f, indent=2, ensure_ascii=False, default=str)
+    else:
+        # Prediction mode: compress history into a statistical summary prompt
+        # (avoids sending the full dataset to the LLM).
+        from app.predective.predict import build_prompt, predict as run_predict
+        metrics = [MetricPoint(**p) for p in raw]
+        prompt  = build_prompt(metrics)
+        result  = run_predict(prompt)
+        report  = result.model_dump() if result else {"error": "prediction failed — check logs"}
+        os.makedirs(os.path.dirname(output_file) or ".", exist_ok=True)
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(report, f, indent=2, ensure_ascii=False, default=str)
+        if result:
+            sev = result.severity.upper()
+            recs = len(result.recommendations)
+            logger.info("cli_predict_done", extra={"severity": result.severity,
+                        "target": result.target_timestamp, "recs": recs, "output": output_file})
+            print(f"[PREDICT {sev}] {result.target_timestamp} — {recs} recommandation(s) → {output_file}")
+        else:
+            print(f"[PREDICT ERROR] prediction failed — see logs")
+        return
 
+    logger.info("cli_report", extra={"output": output_file})
     s = report.summary
     logger.info("cli_done", extra={
         "health":   s.overall_health,
@@ -76,7 +99,7 @@ def cli(metrics_file: str, output_file: str) -> None:
         "output":    output_file,
     })
     print(f"[{s.overall_health.upper()}] {s.anomaly_count} anomalies "
-          f"({s.critical_count} critiques) → {output_file}")
+          f"({s.critical_count} contriques) → {output_file}")
 
 
 def vendor_assets() -> None:
@@ -102,11 +125,12 @@ if __name__ == "__main__":
     parser.add_argument("--out",           default="output/report.json")
     parser.add_argument("--vendor-assets", action="store_true",
                         help="Download Chart.js for on-premise use")
+    parser.add_argument("--predict", default=False, action=argparse.BooleanOptionalAction, help="Run prediction instead of analysis")
     args = parser.parse_args()
 
     if args.vendor_assets:
         vendor_assets()
     elif args.file:
-        cli(args.file, args.out)
+        cli(args.file, args.out, args.predict)
     else:
         serve()
